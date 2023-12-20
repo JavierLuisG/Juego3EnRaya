@@ -122,6 +122,9 @@
               <Color blue="66" green="66" red="66" type="rgb"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonArribaIzqActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="botonArriba">
           <Properties>
@@ -129,6 +132,9 @@
               <Color blue="66" green="66" red="66" type="rgb"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonArribaActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="botonArribaDerecha">
           <Properties>
@@ -136,6 +142,9 @@
               <Color blue="66" green="66" red="66" type="rgb"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonArribaDerechaActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="botonIzq">
           <Properties>
@@ -143,6 +152,9 @@
               <Color blue="66" green="66" red="66" type="rgb"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonIzqActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="botonCentro">
           <Properties>
@@ -150,6 +162,9 @@
               <Color blue="66" green="66" red="66" type="rgb"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonCentroActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="botonDerecha">
           <Properties>
@@ -157,6 +172,9 @@
               <Color blue="66" green="66" red="66" type="rgb"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonDerechaActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="botonAbajoIzq">
           <Properties>
@@ -164,6 +182,9 @@
               <Color blue="66" green="66" red="66" type="rgb"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonAbajoIzqActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="botonAbajo">
           <Properties>
@@ -171,6 +192,9 @@
               <Color blue="66" green="66" red="66" type="rgb"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonAbajoActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="botonAbajoDerecha">
           <Properties>
@@ -178,6 +202,9 @@
               <Color blue="66" green="66" red="66" type="rgb"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonAbajoDerechaActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

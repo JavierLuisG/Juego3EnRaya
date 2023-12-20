@@ -8,14 +8,24 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 public class ventanaPrincipal extends javax.swing.JFrame {
+    
+    // matriz para que al darse nuevamente click no se realice accion
+    private boolean casilla[][] = new boolean[3][3];
+    private String turno = "usuario1";
 
     public ventanaPrincipal() {
         initComponents();
         setLocationRelativeTo(null);
         setSize(600, 600);
-        
-        dibujarX(botonCentro);
-        dibujarO(botonArribaDerecha);
+        llenarCasillas();
+    }
+        // metodo para inicializar las casillas     
+    private void llenarCasillas(){
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                casilla[i][j] = true;                
+            }
+        }
     }
     // Metodo para dibujar la X cuando se teclee la posicion
     private void dibujarX(JButton boton){
@@ -59,30 +69,75 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         panel.setLayout(new java.awt.GridLayout(3, 3));
 
         botonArribaIzq.setBackground(new java.awt.Color(102, 102, 102));
+        botonArribaIzq.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonArribaIzqActionPerformed(evt);
+            }
+        });
         panel.add(botonArribaIzq);
 
         botonArriba.setBackground(new java.awt.Color(102, 102, 102));
+        botonArriba.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonArribaActionPerformed(evt);
+            }
+        });
         panel.add(botonArriba);
 
         botonArribaDerecha.setBackground(new java.awt.Color(102, 102, 102));
+        botonArribaDerecha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonArribaDerechaActionPerformed(evt);
+            }
+        });
         panel.add(botonArribaDerecha);
 
         botonIzq.setBackground(new java.awt.Color(102, 102, 102));
+        botonIzq.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonIzqActionPerformed(evt);
+            }
+        });
         panel.add(botonIzq);
 
         botonCentro.setBackground(new java.awt.Color(102, 102, 102));
+        botonCentro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonCentroActionPerformed(evt);
+            }
+        });
         panel.add(botonCentro);
 
         botonDerecha.setBackground(new java.awt.Color(102, 102, 102));
+        botonDerecha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonDerechaActionPerformed(evt);
+            }
+        });
         panel.add(botonDerecha);
 
         botonAbajoIzq.setBackground(new java.awt.Color(102, 102, 102));
+        botonAbajoIzq.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonAbajoIzqActionPerformed(evt);
+            }
+        });
         panel.add(botonAbajoIzq);
 
         botonAbajo.setBackground(new java.awt.Color(102, 102, 102));
+        botonAbajo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonAbajoActionPerformed(evt);
+            }
+        });
         panel.add(botonAbajo);
 
         botonAbajoDerecha.setBackground(new java.awt.Color(102, 102, 102));
+        botonAbajoDerecha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonAbajoDerechaActionPerformed(evt);
+            }
+        });
         panel.add(botonAbajoDerecha);
 
         barraMenu.setBackground(new java.awt.Color(235, 235, 235));
@@ -136,6 +191,150 @@ public class ventanaPrincipal extends javax.swing.JFrame {
     private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
         System.exit(0);       
     }//GEN-LAST:event_salirActionPerformed
+
+    private void botonArribaIzqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonArribaIzqActionPerformed
+        // se verifica que aun no se ha dado click sobre el boton
+        if (casilla[0][0] == true) {
+            // se verifica el turno
+            if (turno.equals("usuario1")) {
+                dibujarX(botonArribaIzq);
+                turno = "usuario2";
+            } else {
+                dibujarO(botonArribaIzq);
+                turno = "usuario1";
+            }
+            // cambia el valor de la casilla para que no cambie de valor
+            casilla[0][0] = false;            
+        }
+    }//GEN-LAST:event_botonArribaIzqActionPerformed
+
+    private void botonArribaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonArribaActionPerformed
+        // se verifica que aun no se ha dado click sobre el boton
+        if (casilla[0][1] == true) {
+            // se verifica el turno
+            if (turno.equals("usuario1")) {
+                dibujarX(botonArriba);
+                turno = "usuario2";
+            } else {
+                dibujarO(botonArriba);
+                turno = "usuario1";
+            }
+            // cambia el valor de la casilla para que no cambie de valor
+            casilla[0][1] = false;
+        }
+    }//GEN-LAST:event_botonArribaActionPerformed
+
+    private void botonArribaDerechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonArribaDerechaActionPerformed
+        // se verifica que aun no se ha dado click sobre el boton
+        if (casilla[0][2] == true) {
+            // se verifica el turno
+            if (turno.equals("usuario1")) {
+                dibujarX(botonArribaDerecha);
+                turno = "usuario2";
+            } else {
+                dibujarO(botonArribaDerecha);
+                turno = "usuario1";
+            }
+            // cambia el valor de la casilla para que no cambie de valor
+            casilla[0][2] = false;
+        }
+    }//GEN-LAST:event_botonArribaDerechaActionPerformed
+
+    private void botonIzqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIzqActionPerformed
+        // se verifica que aun no se ha dado click sobre el boton
+        if (casilla[1][0] == true) {
+            // se verifica el turno
+            if (turno.equals("usuario1")) {
+                dibujarX(botonIzq);
+                turno = "usuario2";
+            } else {
+                dibujarO(botonIzq);
+                turno = "usuario1";
+            }
+            // cambia el valor de la casilla para que no cambie de valor
+            casilla[1][0] = false;
+        }
+    }//GEN-LAST:event_botonIzqActionPerformed
+
+    private void botonCentroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCentroActionPerformed
+        // se verifica que aun no se ha dado click sobre el boton
+        if (casilla[1][1] == true) {
+            // se verifica el turno
+            if (turno.equals("usuario1")) {
+                dibujarX(botonCentro);
+                turno = "usuario2";
+            } else {
+                dibujarO(botonCentro);
+                turno = "usuario1";
+            }
+            // cambia el valor de la casilla para que no cambie de valor
+            casilla[1][1] = false;
+        }
+    }//GEN-LAST:event_botonCentroActionPerformed
+
+    private void botonDerechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonDerechaActionPerformed
+        // se verifica que aun no se ha dado click sobre el boton
+        if (casilla[1][2] == true) {
+            // se verifica el turno
+            if (turno.equals("usuario1")) {
+                dibujarX(botonDerecha);
+                turno = "usuario2";
+            } else {
+                dibujarO(botonDerecha);
+                turno = "usuario1";
+            }
+            // cambia el valor de la casilla para que no cambie de valor
+            casilla[1][2] = false;
+        }
+    }//GEN-LAST:event_botonDerechaActionPerformed
+
+    private void botonAbajoIzqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAbajoIzqActionPerformed
+        // se verifica que aun no se ha dado click sobre el boton
+        if (casilla[2][0] == true) {
+            // se verifica el turno
+            if (turno.equals("usuario1")) {
+                dibujarX(botonAbajoIzq);
+                turno = "usuario2";
+            } else {
+                dibujarO(botonAbajoIzq);
+                turno = "usuario1";
+            }
+            // cambia el valor de la casilla para que no cambie de valor
+            casilla[2][0] = false;
+        }
+    }//GEN-LAST:event_botonAbajoIzqActionPerformed
+
+    private void botonAbajoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAbajoActionPerformed
+        // se verifica que aun no se ha dado click sobre el boton
+        if (casilla[2][1] == true) {
+            // se verifica el turno
+            if (turno.equals("usuario1")) {
+                dibujarX(botonAbajo);
+                turno = "usuario2";
+            } else {
+                dibujarO(botonAbajo);
+                turno = "usuario1";
+            }
+            // cambia el valor de la casilla para que no cambie de valor
+            casilla[2][1] = false;
+        }
+    }//GEN-LAST:event_botonAbajoActionPerformed
+
+    private void botonAbajoDerechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAbajoDerechaActionPerformed
+        // se verifica que aun no se ha dado click sobre el boton
+        if (casilla[2][2] == true) {
+            // se verifica el turno
+            if (turno.equals("usuario1")) {
+                dibujarX(botonAbajoDerecha);
+                turno = "usuario2";
+            } else {
+                dibujarO(botonAbajoDerecha);
+                turno = "usuario1";
+            }
+            // cambia el valor de la casilla para que no cambie de valor
+            casilla[2][2] = false;
+        }
+    }//GEN-LAST:event_botonAbajoDerechaActionPerformed
 
     /**
      * @param args the command line arguments
