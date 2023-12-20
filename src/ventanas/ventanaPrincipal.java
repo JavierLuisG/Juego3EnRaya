@@ -374,13 +374,49 @@ public class ventanaPrincipal extends javax.swing.JFrame {
     
     // metodo sobre matriz[][] para comprobar quien gana
     private void comprobarGanador(){
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                System.out.print(matriz[i][j] + " ");                
-            }
-            System.out.println("");            
+        boolean ganador1 = false;
+        boolean ganador2 = false;
+        
+        // comprobar si el ganador es usuario1
+        ganador1 = comprobar(1);
+        // comprobar si el ganador es usuario2
+        ganador2 = comprobar(2);
+        
+        if (ganador1 == true) {
+            System.out.println("Ganador, jugador 1");
+        } 
+        else if (ganador2 == true){
+            System.out.println("Ganador, jugador 2");
         }
-        System.out.println("");
+        
+    }
+    private boolean comprobar(int num){
+        boolean ganador= false;
+        if (matriz[0][0] == num && matriz[0][1] == num && matriz[0][2] == num) {
+            ganador = true;
+        }
+        else if (matriz[1][0] == num && matriz[1][1] == num && matriz[1][2] == num) {
+            ganador = true;
+        }
+        else if (matriz[2][0] == num && matriz[2][1] == num && matriz[2][2] == num) {
+            ganador = true;
+        }
+        else if (matriz[0][0] == num && matriz[1][0] == num && matriz[2][0] == num) {
+            ganador = true;
+        }
+        else if (matriz[0][1] == num && matriz[1][1] == num && matriz[2][1] == num) {
+            ganador = true;
+        }
+        else if (matriz[0][2] == num && matriz[1][2] == num && matriz[2][2] == num) {
+            ganador = true;
+        }
+        else if (matriz[0][0] == num && matriz[1][1] == num && matriz[2][2] == num) {
+            ganador = true;
+        }
+        else if (matriz[2][0] == num && matriz[1][1] == num && matriz[0][2] == num) {
+            ganador = true;
+        }
+        return ganador;
     }
     
     /**
