@@ -12,18 +12,27 @@ public class ventanaPrincipal extends javax.swing.JFrame {
     // matriz para que al darse nuevamente click no se realice accion
     private boolean casilla[][] = new boolean[3][3];
     private String turno = "usuario1";
+    private int matriz[][] = new int[3][3];
 
     public ventanaPrincipal() {
         initComponents();
         setLocationRelativeTo(null);
         setSize(600, 600);
         llenarCasillas();
+        llenarMatriz();
     }
         // metodo para inicializar las casillas     
     private void llenarCasillas(){
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 casilla[i][j] = true;                
+            }
+        }
+    }
+    private void llenarMatriz(){
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                matriz[i][j] = 0;
             }
         }
     }
@@ -198,13 +207,16 @@ public class ventanaPrincipal extends javax.swing.JFrame {
             // se verifica el turno
             if (turno.equals("usuario1")) {
                 dibujarX(botonArribaIzq);
+                matriz[0][0] = 1;
                 turno = "usuario2";
             } else {
                 dibujarO(botonArribaIzq);
+                matriz[0][0] = 2;
                 turno = "usuario1";
             }
             // cambia el valor de la casilla para que no cambie de valor
             casilla[0][0] = false;            
+            comprobarGanador();
         }
     }//GEN-LAST:event_botonArribaIzqActionPerformed
 
@@ -214,13 +226,16 @@ public class ventanaPrincipal extends javax.swing.JFrame {
             // se verifica el turno
             if (turno.equals("usuario1")) {
                 dibujarX(botonArriba);
+                matriz[0][1] = 1;
                 turno = "usuario2";
             } else {
                 dibujarO(botonArriba);
+                matriz[0][1] = 2;
                 turno = "usuario1";
             }
             // cambia el valor de la casilla para que no cambie de valor
             casilla[0][1] = false;
+            comprobarGanador();
         }
     }//GEN-LAST:event_botonArribaActionPerformed
 
@@ -230,13 +245,16 @@ public class ventanaPrincipal extends javax.swing.JFrame {
             // se verifica el turno
             if (turno.equals("usuario1")) {
                 dibujarX(botonArribaDerecha);
+                matriz[0][2] = 1;
                 turno = "usuario2";
             } else {
                 dibujarO(botonArribaDerecha);
+                matriz[0][2] = 2;
                 turno = "usuario1";
             }
             // cambia el valor de la casilla para que no cambie de valor
             casilla[0][2] = false;
+            comprobarGanador();
         }
     }//GEN-LAST:event_botonArribaDerechaActionPerformed
 
@@ -246,13 +264,16 @@ public class ventanaPrincipal extends javax.swing.JFrame {
             // se verifica el turno
             if (turno.equals("usuario1")) {
                 dibujarX(botonIzq);
+                matriz[1][0] = 1;
                 turno = "usuario2";
             } else {
                 dibujarO(botonIzq);
+                matriz[1][0] = 2;
                 turno = "usuario1";
             }
             // cambia el valor de la casilla para que no cambie de valor
             casilla[1][0] = false;
+            comprobarGanador();
         }
     }//GEN-LAST:event_botonIzqActionPerformed
 
@@ -262,13 +283,16 @@ public class ventanaPrincipal extends javax.swing.JFrame {
             // se verifica el turno
             if (turno.equals("usuario1")) {
                 dibujarX(botonCentro);
+                matriz[1][1] = 1;
                 turno = "usuario2";
             } else {
                 dibujarO(botonCentro);
+                matriz[1][1] = 2;
                 turno = "usuario1";
             }
             // cambia el valor de la casilla para que no cambie de valor
             casilla[1][1] = false;
+            comprobarGanador();
         }
     }//GEN-LAST:event_botonCentroActionPerformed
 
@@ -278,13 +302,16 @@ public class ventanaPrincipal extends javax.swing.JFrame {
             // se verifica el turno
             if (turno.equals("usuario1")) {
                 dibujarX(botonDerecha);
+                matriz[1][2] = 1;
                 turno = "usuario2";
             } else {
                 dibujarO(botonDerecha);
+                matriz[1][2] = 2;
                 turno = "usuario1";
             }
             // cambia el valor de la casilla para que no cambie de valor
             casilla[1][2] = false;
+            comprobarGanador();
         }
     }//GEN-LAST:event_botonDerechaActionPerformed
 
@@ -294,13 +321,16 @@ public class ventanaPrincipal extends javax.swing.JFrame {
             // se verifica el turno
             if (turno.equals("usuario1")) {
                 dibujarX(botonAbajoIzq);
+                matriz[2][0] = 1;
                 turno = "usuario2";
             } else {
                 dibujarO(botonAbajoIzq);
+                matriz[2][0] = 2;
                 turno = "usuario1";
             }
             // cambia el valor de la casilla para que no cambie de valor
             casilla[2][0] = false;
+            comprobarGanador();
         }
     }//GEN-LAST:event_botonAbajoIzqActionPerformed
 
@@ -310,13 +340,16 @@ public class ventanaPrincipal extends javax.swing.JFrame {
             // se verifica el turno
             if (turno.equals("usuario1")) {
                 dibujarX(botonAbajo);
+                matriz[2][1] = 1;
                 turno = "usuario2";
             } else {
                 dibujarO(botonAbajo);
+                matriz[2][1] = 2;
                 turno = "usuario1";
             }
             // cambia el valor de la casilla para que no cambie de valor
             casilla[2][1] = false;
+            comprobarGanador();
         }
     }//GEN-LAST:event_botonAbajoActionPerformed
 
@@ -326,16 +359,30 @@ public class ventanaPrincipal extends javax.swing.JFrame {
             // se verifica el turno
             if (turno.equals("usuario1")) {
                 dibujarX(botonAbajoDerecha);
+                matriz[2][2] = 1;
                 turno = "usuario2";
             } else {
                 dibujarO(botonAbajoDerecha);
+                matriz[2][2] = 2;
                 turno = "usuario1";
             }
             // cambia el valor de la casilla para que no cambie de valor
             casilla[2][2] = false;
+            comprobarGanador();
         }
     }//GEN-LAST:event_botonAbajoDerechaActionPerformed
-
+    
+    // metodo sobre matriz[][] para comprobar quien gana
+    private void comprobarGanador(){
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                System.out.print(matriz[i][j] + " ");                
+            }
+            System.out.println("");            
+        }
+        System.out.println("");
+    }
+    
     /**
      * @param args the command line arguments
      */
