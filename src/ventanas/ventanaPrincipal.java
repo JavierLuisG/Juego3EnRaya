@@ -18,14 +18,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private String usuario2;
 
     public VentanaPrincipal(String usuario1, String usuario2) {
+        // asignacion de los datos que entran a las variables
+        this.usuario1 = usuario1;
+        this.usuario2 = usuario2;
         initComponents();
         setSize(600, 600);
         setLocationRelativeTo(null);
         llenarCasillas();
         llenarMatriz();
-        // asignacion de los datos que entran a las variables
-        this.usuario1 = usuario1;
-        this.usuario2 = usuario2;
     }
         // metodo para inicializar las casillas     
     private void llenarCasillas(){
@@ -390,12 +390,17 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         ganador2 = comprobar(2);
         
         if (ganador1 == true) {
-            System.out.println("Ganador, jugador " + usuario1);
+            // se instancia la ventana ganador que da el resultado del ganador
+            // modal: true es para que no permita volver a acceer a la ventana principal
+            VentanaGanador ganador = new VentanaGanador(this, true, usuario1);
+            ganador.setVisible(true);
             // se implementa reiniciar juego 
             reiniciarJuego();
         } 
         else if (ganador2 == true){
-            System.out.println("Ganador, jugador " + usuario2);
+            // se instancia la ventana ganador que da el resultado del ganador
+            VentanaGanador ganador = new VentanaGanador(this, true, usuario2);
+            ganador.setVisible(true);
             // se implementa reiniciar juego
             reiniciarJuego();
         }
@@ -410,7 +415,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 }
             }
             if (casillasEmpate == 9) {
-                System.out.println("Han quedado en empate");
+                System.out.println(usuario1 + " y " + usuario2 + ", han quedado en empate");
                 reiniciarJuego();
             }
             else {
