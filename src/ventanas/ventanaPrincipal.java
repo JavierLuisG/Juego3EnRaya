@@ -391,7 +391,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         
         if (ganador1 == true) {
             // se instancia la ventana ganador que da el resultado del ganador
-            // modal: true es para que no permita volver a acceer a la ventana principal
+            // modal: true es para que no permita volver a acceder a la ventana principal
             VentanaGanador ganador = new VentanaGanador(this, true, usuario1);
             ganador.setVisible(true);
             // se implementa reiniciar juego 
@@ -399,6 +399,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         } 
         else if (ganador2 == true){
             // se instancia la ventana ganador que da el resultado del ganador
+            // modal: true es para que no permita volver a acceder a la ventana principal
             VentanaGanador ganador = new VentanaGanador(this, true, usuario2);
             ganador.setVisible(true);
             // se implementa reiniciar juego
@@ -415,7 +416,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 }
             }
             if (casillasEmpate == 9) {
-                System.out.println(usuario1 + " y " + usuario2 + ", han quedado en empate");
+                // se instancia la ventana empate 
+                // modal: true es para que no permita volver a acceder a la ventana principal
+                VentanaEmpate empate = new VentanaEmpate(this, true);
+                empate.setVisible(true);
                 reiniciarJuego();
             }
             else {
