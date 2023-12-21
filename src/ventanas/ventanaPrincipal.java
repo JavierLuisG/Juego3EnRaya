@@ -376,6 +376,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
     private void comprobarGanador(){
         boolean ganador1 = false;
         boolean ganador2 = false;
+        int casillasEmpate = 0;
         
         // comprobar si el ganador es usuario1
         ganador1 = comprobar(1);
@@ -384,12 +385,34 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         
         if (ganador1 == true) {
             System.out.println("Ganador, jugador 1");
+            // se implementa reiniciar juego 
+            reiniciarJuego();
         } 
         else if (ganador2 == true){
             System.out.println("Ganador, jugador 2");
+            // se implementa reiniciar juego
+            reiniciarJuego();
         }
-        
+        // si se realiza un empate
+        else {
+            // para haber empate es porque el tablero se encuentra lleno
+            for (int i = 0; i < 3; i++) {
+                for (int j = 0; j < 3; j++) {
+                    if (matriz[i][j] != 0) {
+                        casillasEmpate++;
+                    }                    
+                }
+            }
+            if (casillasEmpate == 9) {
+                System.out.println("Han quedado en empate");
+                reiniciarJuego();
+            }
+            else {
+                casillasEmpate = 0;
+            }
+        }        
     }
+    //Comprobar que jugador ha realizado la secuencia para ganar
     private boolean comprobar(int num){
         boolean ganador= false;
         if (matriz[0][0] == num && matriz[0][1] == num && matriz[0][2] == num) {
@@ -417,6 +440,23 @@ public class ventanaPrincipal extends javax.swing.JFrame {
             ganador = true;
         }
         return ganador;
+    }
+    // metodo para reiniciar juego cuando algun jugador haya ganado
+    private void reiniciarJuego(){
+        // Se limpia casilla[][] vuelve a ser true
+        llenarCasillas();
+        // Se reinicia matriz[][] vuelve a ser 0
+        llenarMatriz();
+        // los botones vuelven a estar en blanco con null
+        botonArribaIzq.setIcon(null);
+        botonArriba.setIcon(null);
+        botonArribaDerecha.setIcon(null);
+        botonIzq.setIcon(null);
+        botonCentro.setIcon(null);
+        botonDerecha.setIcon(null);
+        botonAbajoIzq.setIcon(null);
+        botonAbajo.setIcon(null);
+        botonAbajoDerecha.setIcon(null);        
     }
     
     /**
