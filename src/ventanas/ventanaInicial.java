@@ -126,7 +126,7 @@ public class VentanaInicial extends javax.swing.JFrame {
 
     private void botonComenzarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonComenzarActionPerformed
         // Instancia para invocar a la ventana principal al momento de comenzar el juego
-        VentanaPrincipal vp = new VentanaPrincipal();
+        VentanaPrincipal vp = new VentanaPrincipal(usuario1, usuario2);
         // con setVisible true para que aparezca
         vp.setVisible(true);
         // dispose permite desaparecer la ventana que en la que se está

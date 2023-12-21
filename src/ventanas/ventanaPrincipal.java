@@ -13,14 +13,19 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private boolean casilla[][] = new boolean[3][3];
     private String turno = "usuario1";
     private int matriz[][] = new int[3][3];
+    // usuario enviados desde la VentanaInicial
+    private String usuario1;
+    private String usuario2;
 
-    public VentanaPrincipal() {
+    public VentanaPrincipal(String usuario1, String usuario2) {
         initComponents();
         setSize(600, 600);
         setLocationRelativeTo(null);
-        
         llenarCasillas();
         llenarMatriz();
+        // asignacion de los datos que entran a las variables
+        this.usuario1 = usuario1;
+        this.usuario2 = usuario2;
     }
         // metodo para inicializar las casillas     
     private void llenarCasillas(){
@@ -385,12 +390,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         ganador2 = comprobar(2);
         
         if (ganador1 == true) {
-            System.out.println("Ganador, jugador 1");
+            System.out.println("Ganador, jugador " + usuario1);
             // se implementa reiniciar juego 
             reiniciarJuego();
         } 
         else if (ganador2 == true){
-            System.out.println("Ganador, jugador 2");
+            System.out.println("Ganador, jugador " + usuario2);
             // se implementa reiniciar juego
             reiniciarJuego();
         }
@@ -467,7 +472,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VentanaPrincipal().setVisible(true);
+                // se ponen como parametros null para que no de error
+                new VentanaPrincipal(null, null).setVisible(true);
             }
         });
     }
