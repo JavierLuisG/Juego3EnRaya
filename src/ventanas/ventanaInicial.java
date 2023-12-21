@@ -8,15 +8,17 @@ package ventanas;
  *
  * @author juanc
  */
-public class ventanaInicial extends javax.swing.JFrame {
+public class VentanaInicial extends javax.swing.JFrame {
 
-    /**
-     * Creates new form ventanaInicial
-     */
-    public ventanaInicial() {
+    // variables para guardar los datos ingresados 
+    private String usuario1;
+    private String usuario2;
+    
+    public VentanaInicial() {
         initComponents();
         setLocationRelativeTo(null);
         setSize(600,650);
+        botonComenzar.setVisible(false);
     }
 
     /**
@@ -34,81 +36,102 @@ public class ventanaInicial extends javax.swing.JFrame {
         etiquetaNombre2 = new javax.swing.JLabel();
         cajaNombre1 = new javax.swing.JTextField();
         cajaNombre2 = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
+        etiquetaImagen = new javax.swing.JLabel();
+        botonGuardar = new javax.swing.JButton();
+        etiquetaMuestra1 = new javax.swing.JLabel();
+        etiquetaMuestra2 = new javax.swing.JLabel();
+        botonComenzar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(600, 600));
 
         panel.setPreferredSize(new java.awt.Dimension(600, 600));
+        panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         etiquetaTitulo.setFont(new java.awt.Font("Arial Black", 0, 36)); // NOI18N
         etiquetaTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         etiquetaTitulo.setText("Tres en Raya");
+        panel.add(etiquetaTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 17, 594, -1));
 
         etiquetaNombre1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         etiquetaNombre1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         etiquetaNombre1.setText("Jugador 1");
+        panel.add(etiquetaNombre1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, 350, 40));
 
         etiquetaNombre2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         etiquetaNombre2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         etiquetaNombre2.setText("Jugador 2");
+        panel.add(etiquetaNombre2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 150, 338, 30));
 
         cajaNombre1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         cajaNombre1.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        panel.add(cajaNombre1, new org.netbeans.lib.awtextra.AbsoluteConstraints(64, 109, 460, 34));
 
         cajaNombre2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        cajaNombre2.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        panel.add(cajaNombre2, new org.netbeans.lib.awtextra.AbsoluteConstraints(64, 183, 460, 34));
 
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/3EnRaya.png"))); // NOI18N
+        etiquetaImagen.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        etiquetaImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/3EnRaya.png"))); // NOI18N
+        panel.add(etiquetaImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(-2, 349, 600, 230));
 
-        javax.swing.GroupLayout panelLayout = new javax.swing.GroupLayout(panel);
-        panel.setLayout(panelLayout);
-        panelLayout.setHorizontalGroup(
-            panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(etiquetaTitulo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(panelLayout.createSequentialGroup()
-                .addGap(64, 64, 64)
-                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(etiquetaNombre2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(etiquetaNombre1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(panelLayout.createSequentialGroup()
-                        .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cajaNombre2, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cajaNombre1, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 96, Short.MAX_VALUE))))
-        );
-        panelLayout.setVerticalGroup(
-            panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelLayout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addComponent(etiquetaTitulo)
-                .addGap(18, 18, 18)
-                .addComponent(etiquetaNombre1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(cajaNombre1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(etiquetaNombre2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(cajaNombre2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel1)
-                .addContainerGap(9, Short.MAX_VALUE))
-        );
+        botonGuardar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        botonGuardar.setText("Guardar");
+        botonGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonGuardarActionPerformed(evt);
+            }
+        });
+        panel.add(botonGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 230, 160, 38));
+
+        etiquetaMuestra1.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
+        panel.add(etiquetaMuestra1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, -1, -1));
+
+        etiquetaMuestra2.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
+        panel.add(etiquetaMuestra2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 310, -1, -1));
+
+        botonComenzar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        botonComenzar.setText("Comenzar");
+        botonComenzar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonComenzarActionPerformed(evt);
+            }
+        });
+        panel.add(botonComenzar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 230, 160, 38));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, 610, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(panel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void botonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarActionPerformed
+        // se asignan los valores a las variables
+        usuario1 = cajaNombre1.getText();
+        usuario2 = cajaNombre2.getText();
+
+        botonGuardar.setVisible(false);
+        botonComenzar.setVisible(true);
+        etiquetaMuestra1.setText(usuario1 + ", jugará primero con X");
+        etiquetaMuestra2.setText(usuario2 + ", jugará segundo con O");
+    }//GEN-LAST:event_botonGuardarActionPerformed
+
+    private void botonComenzarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonComenzarActionPerformed
+        // Instancia para invocar a la ventana principal al momento de comenzar el juego
+        VentanaPrincipal vp = new VentanaPrincipal();
+        // con setVisible true para que aparezca
+        vp.setVisible(true);
+        // dispose permite desaparecer la ventana que en la que se está
+        dispose();
+    }//GEN-LAST:event_botonComenzarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -127,31 +150,36 @@ public class ventanaInicial extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ventanaInicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaInicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ventanaInicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaInicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ventanaInicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaInicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ventanaInicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaInicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ventanaInicial().setVisible(true);
+                new VentanaInicial().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botonComenzar;
+    private javax.swing.JButton botonGuardar;
     private javax.swing.JTextField cajaNombre1;
     private javax.swing.JTextField cajaNombre2;
+    private javax.swing.JLabel etiquetaImagen;
+    private javax.swing.JLabel etiquetaMuestra1;
+    private javax.swing.JLabel etiquetaMuestra2;
     private javax.swing.JLabel etiquetaNombre1;
     private javax.swing.JLabel etiquetaNombre2;
     private javax.swing.JLabel etiquetaTitulo;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel panel;
     // End of variables declaration//GEN-END:variables
 }

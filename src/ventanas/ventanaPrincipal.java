@@ -7,17 +7,18 @@ package ventanas;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
-public class ventanaPrincipal extends javax.swing.JFrame {
+public class VentanaPrincipal extends javax.swing.JFrame {
     
     // matriz para que al darse nuevamente click no se realice accion
     private boolean casilla[][] = new boolean[3][3];
     private String turno = "usuario1";
     private int matriz[][] = new int[3][3];
 
-    public ventanaPrincipal() {
+    public VentanaPrincipal() {
         initComponents();
-        setLocationRelativeTo(null);
         setSize(600, 600);
+        setLocationRelativeTo(null);
+        
         llenarCasillas();
         llenarMatriz();
     }
@@ -466,7 +467,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ventanaPrincipal().setVisible(true);
+                new VentanaPrincipal().setVisible(true);
             }
         });
     }
