@@ -16,6 +16,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     // usuario enviados desde la VentanaInicial
     private String usuario1;
     private String usuario2;
+    private int vecesGano1 = 0;
+    private int vecesGano2 = 0;
+    private int vecesEmpate = 0;
 
     public VentanaPrincipal(String usuario1, String usuario2) {
         // asignacion de los datos que entran a las variables
@@ -79,6 +82,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(102, 102, 102));
+        setPreferredSize(new java.awt.Dimension(600, 600));
 
         panel.setBackground(new java.awt.Color(102, 102, 102));
         panel.setLayout(new java.awt.GridLayout(3, 3));
@@ -156,6 +160,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         panel.add(botonAbajoDerecha);
 
         barraMenu.setBackground(new java.awt.Color(235, 235, 235));
+        barraMenu.setMinimumSize(new java.awt.Dimension(600, 600));
 
         menuJuego.setText("Juego");
         menuJuego.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
@@ -168,6 +173,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         mostrarResultados.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         mostrarResultados.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/table.png"))); // NOI18N
         mostrarResultados.setText("Mostrar tabla de resultados");
+        mostrarResultados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mostrarResultadosActionPerformed(evt);
+            }
+        });
         menuJuego.add(mostrarResultados);
         menuJuego.add(separador);
 
@@ -193,11 +203,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, 574, Short.MAX_VALUE)
         );
 
         pack();
@@ -377,6 +387,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             comprobarGanador();
         }
     }//GEN-LAST:event_botonAbajoDerechaActionPerformed
+
+    private void mostrarResultadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarResultadosActionPerformed
+        VentanaMostrarResultados mostrar = new VentanaMostrarResultados(this, true, usuario1, usuario2, vecesGano1, vecesGano2, vecesEmpate);
+        mostrar.setVisible(true);        
+    }//GEN-LAST:event_mostrarResultadosActionPerformed
     
     // metodo sobre matriz[][] para comprobar quien gana
     private void comprobarGanador(){
@@ -390,6 +405,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         ganador2 = comprobar(2);
         
         if (ganador1 == true) {
+            vecesGano1++;
             // se instancia la ventana ganador que da el resultado del ganador
             // modal: true es para que no permita volver a acceder a la ventana principal
             VentanaGanador ganador = new VentanaGanador(this, true, usuario1);
@@ -398,6 +414,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             reiniciarJuego();
         } 
         else if (ganador2 == true){
+            vecesGano2++;
             // se instancia la ventana ganador que da el resultado del ganador
             // modal: true es para que no permita volver a acceder a la ventana principal
             VentanaGanador ganador = new VentanaGanador(this, true, usuario2);
@@ -406,7 +423,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             reiniciarJuego();
         }
         // si se realiza un empate
-        else {
+        else {            
             // para haber empate es porque el tablero se encuentra lleno
             for (int i = 0; i < 3; i++) {
                 for (int j = 0; j < 3; j++) {
@@ -416,6 +433,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 }
             }
             if (casillasEmpate == 9) {
+                vecesEmpate++;
                 // se instancia la ventana empate 
                 // modal: true es para que no permita volver a acceder a la ventana principal
                 VentanaEmpate empate = new VentanaEmpate(this, true);
