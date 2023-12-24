@@ -30,7 +30,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         llenarCasillas();
         llenarMatriz();
     }
-        // metodo para inicializar las casillas     
+    // metodo para inicializar las casillas     
     private void llenarCasillas(){
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
@@ -44,6 +44,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 matriz[i][j] = 0;
             }
         }
+    }
+    // preguntar al usuario quien juega primero
+    private void quienJuegaPrimero(){
+        VentanaEscogerTurno vet = new VentanaEscogerTurno(this, true, usuario1, usuario2);
+        vet.setVisible(true);
+        turno = vet.getTurno();
     }
     // Metodo para dibujar la X cuando se teclee la posicion
     private void dibujarX(JButton boton){
@@ -168,6 +174,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         comenzarDeNuevo.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         comenzarDeNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/restart.png"))); // NOI18N
         comenzarDeNuevo.setText("Comenzar de nuevo");
+        comenzarDeNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comenzarDeNuevoActionPerformed(evt);
+            }
+        });
         menuJuego.add(comenzarDeNuevo);
 
         mostrarResultados.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -392,6 +403,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         VentanaMostrarResultados mostrar = new VentanaMostrarResultados(this, true, usuario1, usuario2, vecesGano1, vecesGano2, vecesEmpate);
         mostrar.setVisible(true);        
     }//GEN-LAST:event_mostrarResultadosActionPerformed
+
+    private void comenzarDeNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comenzarDeNuevoActionPerformed
+        vecesGano1 = 0;
+        vecesGano2 = 0;
+        vecesEmpate = 0;
+        reiniciarJuego();
+    }//GEN-LAST:event_comenzarDeNuevoActionPerformed
     
     // metodo sobre matriz[][] para comprobar quien gana
     private void comprobarGanador(){
@@ -490,6 +508,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         botonAbajoIzq.setIcon(null);
         botonAbajo.setIcon(null);
         botonAbajoDerecha.setIcon(null);        
+        // escoger el orden de juego
+        quienJuegaPrimero();
     }
     
     /**
