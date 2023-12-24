@@ -4,6 +4,12 @@
  */
 package ventanas;
 
+import java.awt.Desktop;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
@@ -206,6 +212,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         munuAyuda.setText("Ayuda");
         munuAyuda.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        munuAyuda.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                munuAyudaMouseClicked(evt);
+            }
+        });
         barraMenu.add(munuAyuda);
 
         setJMenuBar(barraMenu);
@@ -410,6 +421,19 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         vecesEmpate = 0;
         reiniciarJuego();
     }//GEN-LAST:event_comenzarDeNuevoActionPerformed
+
+    private void munuAyudaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_munuAyudaMouseClicked
+        try {
+            try {
+                // acción que se realiza al dar Click y soltar el menú
+                Desktop.getDesktop().browse(new URI("https://www.mundodeportivo.com/uncomo/ocio/articulo/como-jugar-al-tres-en-raya-2442.html"));
+            } catch (IOException ex) {
+                //Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } catch (URISyntaxException ex) {
+            //Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_munuAyudaMouseClicked
     
     // metodo sobre matriz[][] para comprobar quien gana
     private void comprobarGanador(){

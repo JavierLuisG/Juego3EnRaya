@@ -6,10 +6,6 @@ package ventanas;
 
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author juanc
- */
 public class VentanaMostrarResultados extends javax.swing.JDialog {
 
     // a la tabla se le tiene que dar un modelo

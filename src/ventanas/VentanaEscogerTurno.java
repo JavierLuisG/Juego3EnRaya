@@ -4,10 +4,6 @@
  */
 package ventanas;
 
-/**
- *
- * @author juanc
- */
 public class VentanaEscogerTurno extends javax.swing.JDialog {
     
     private String usuario1;
@@ -23,11 +19,9 @@ public class VentanaEscogerTurno extends javax.swing.JDialog {
         initComponents();
         setLocationRelativeTo(null);
     }
-
     public String getTurno() {
         return turno;
     }
-   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

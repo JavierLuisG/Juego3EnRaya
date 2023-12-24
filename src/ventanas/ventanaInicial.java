@@ -4,10 +4,6 @@
  */
 package ventanas;
 
-/**
- *
- * @author juanc
- */
 public class VentanaInicial extends javax.swing.JFrame {
 
     // variables para guardar los datos ingresados 
