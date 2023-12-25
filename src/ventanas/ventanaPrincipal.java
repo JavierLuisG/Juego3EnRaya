@@ -434,13 +434,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             //Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_munuAyudaMouseClicked
-    
     // metodo sobre matriz[][] para comprobar quien gana
     private void comprobarGanador(){
         boolean ganador1 = false;
         boolean ganador2 = false;
         int casillasEmpate = 0;
-        
         // comprobar si el ganador es usuario1
         ganador1 = comprobar(1);
         // comprobar si el ganador es usuario2
@@ -535,12 +533,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         // escoger el orden de juego
         quienJuegaPrimero();
     }
-    
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-       
+    public static void main(String args[]) {       
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 // se ponen como parametros null para que no de error
